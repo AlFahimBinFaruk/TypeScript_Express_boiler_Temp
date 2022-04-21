@@ -5,8 +5,9 @@ import mongoose from "mongoose";
 import { DB, PORT } from "./config";
 import { errorHandler } from "./middleware/errorHanlder";
 import morgan from "morgan";
+import cors from "cors";
 const app = express();
-app.use(express.json());
+app.use([express.json(), express.urlencoded({ extended: true }), cors()]);
 
 app.use("/", exampleRoute);
 
